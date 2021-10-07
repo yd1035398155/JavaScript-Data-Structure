@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="module">
+		import { UnionFind, PriorityQueue, compare } from './Kruscal.js'
+		import { Edge } from './Graph.js'
+		let e3 = new Edge(5, "1", "2")
+		let e1 = new Edge(2, "1", "2")
+		let e2 = new Edge(1, "5", "4")
+		let priorityQueue = new PriorityQueue(compare)
+		priorityQueue.push(e3)
+		priorityQueue.push(e1)
+		priorityQueue.push(e2)
+		console.log(priorityQueue);
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

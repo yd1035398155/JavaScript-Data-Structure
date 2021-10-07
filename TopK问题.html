@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//求数组的前k个最小值
+		var getLeastNumbers = function (arr, k) {
+			if (arr == null || arr.length === 0) return
+			quickSort(arr, 0, arr.length - 1, k);
+			return arr.slice(0, k)
+		};
+		function quickSort(arr, L, R, k) {
+			if (L >= R) return;
+			swap(arr, R, L + Math.floor(Math.random() * (R - L + 1)));
+			let p = partition(arr, L, R);
+			if (p === k) {
+				return arr.slice(0, k);
+			} else if (p < k) {
+				quickSort(arr, p + 1, R, k)
+			} else {
+				quickSort(arr, L, p - 1, k)
+			}
+		}
+		function partition(arr, L, R) {
+			let start = L;
+			let end = R;
+			while (start < end) {
+				if (arr[start] <= arr[R]) {
+					start++;
+				} else {
+					swap(arr, start, --end);
+				}
+			}
+			swap(arr, end, R);
+			return end;
+		}
+		function swap(arr, L, R) {
+			let t = arr[L];
+			arr[L] = arr[R];
+			arr[R] = t;
+		}
+	</script>
+</body>
+
+</html>

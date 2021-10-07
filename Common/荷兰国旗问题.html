@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>荷兰国旗问题(三色旗,快排的原型)</title>
+</head>
+
+<body>
+	<script>
+		let arr = [1, 7, 4, 3, 5, 2, 4, 4, 5, 6];
+		console.log(arr);
+		san(arr, 4);
+		console.log(arr);
+		function san(arr, num) {
+			if (arr == null || arr.length < 2) return
+			let start = 0;
+			let end = arr.length - 1;
+			let i = 0;
+			while (i <= end) {
+				if (arr[i] < num) {
+					exchange(arr, start++, i++);
+				}
+				else if (arr[i] > num) {
+					exchange(arr, end--, i)
+				} else {
+					i++
+				}
+			}
+			console.log(start, end);
+		}
+		function exchange(arr, a, b) {
+			let temp = arr[a];
+			arr[a] = arr[b];
+			arr[b] = temp;
+		}
+	</script>
+</body>
+
+</html>

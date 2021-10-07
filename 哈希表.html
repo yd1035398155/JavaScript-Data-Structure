@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// const HashMap = {};
+		// let arr = ['A', 'B', 'C']
+		// for (let i = 0; i < arr.length; i++) {
+		// 	HashMap[i] = arr[i];
+		// }
+		// console.log(HashMap[0]);
+		class HashMap {
+			constructor() {
+				this.map = {}
+			}
+			push(arg) {
+				this.map.push(arg)
+			}
+		}
+		let map = new HashMap();
+		let val = {
+			1: "YangDong",
+			2: "adsa"
+		}
+		for (let i in val) {
+			console.log(val[i]);
+		}
+
+	</script>
+</body>
+
+</html>

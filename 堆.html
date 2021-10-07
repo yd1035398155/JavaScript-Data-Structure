@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// 实质为完全二叉树
+		// 小根堆
+		class Heap {
+			constructor() {
+				this.heap = []
+				this.heapSize = 0
+			}
+			push(num) {
+				this.heap.push(num);
+				heapInsert(this.heap, this.heapSize++)
+			}
+			pop() {
+				if (this.heapSize === 0) return null
+				else {
+					heapify(this.heap, 0, this.heapSize)
+					let res = this.heap[0];
+					this.heap[0] = this.heap[this.heapSize - 1];
+					this.heap.length = --this.heapSize;
+					return res
+				}
+			}
+		}
+		function heapInsert(arr, index) {
+			while (index != 0 && arr[index] < arr[Math.floor((index - 1) / 2)]) {
+				swap(arr, index, Math.floor((index - 1) / 2));
+				index = Math.floor((index - 1) / 2);
+			}
+		}
+		function heapify(arr, index, heapSize) {
+			let left = index * 2 + 1;
+			while (left < heapSize) {
+				let smallest = left + 1 < heapSize && arr[left + 1] < arr[left] ? left + 1 : left;
+				smallest = arr[index] < arr[smallest] ? index : smallest;
+				if (smallest === index) {
+					break
+				}
+				swap(arr, index, smallest);
+				index = smallest;
+				left = index * 2 + 1
+			}
+		}
+		function swap(arr, a, b) {
+			let temp = arr[a]
+			arr[a] = arr[b]
+			arr[b] = temp
+		}
+	</script>
+
+	<script>
+		let heap = new Heap();
+
+	</script>
+</body>
+
+</html>

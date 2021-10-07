@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>二分查找</title>
+</head>
+
+<body>
+	<script>
+		var arr = [0, 1, 1, 1, 2, 3, 3, 3, 3, 3];
+
+		function find(arr, num) {
+			if (arr.length === 0 || arr[arr.length - 1] < num) return -1;
+			let left = 0;
+			let right = arr.length - 1;
+			// let index = right;
+			let index = 0;
+			while (left <= right) {
+				let middle = Math.floor((left + right) / 2);
+				// 找大于等于num的最左侧的下标
+				// if (arr[middle] >= num) {
+				// 	if (middle < index) index = middle;
+				// 	right = middle - 1;
+				// } else {
+				// 	left = middle + 1;
+				// }
+
+				// 找小于等于num最右侧的位置
+				if (arr[middle] <= num) {
+					if (middle > index) index = middle;
+					left = middle + 1;
+				}
+				else right = middle - 1;
+			}
+			return index
+		}
+		let res = find(arr, 3);
+		console.log(res);
+	</script>
+</body>
+
+</html>

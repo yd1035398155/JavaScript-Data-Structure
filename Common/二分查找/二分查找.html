@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>二分查找</title>
+</head>
+
+<body>
+	<script>
+		var arr = [1, 2, 4, 7, 8, 15, 32, 48, 65, 71, 99];
+		function find(arr, num, left, right) {
+			if (arr.length === 0) return false;
+			if (left === right && arr[left] != num) return false;
+			let middle = Math.ceil((left + right) / 2);
+			if (arr[middle] === num) return true;
+			else if (arr[middle] > num) return find(arr, num, left, middle - 1);
+			else return find(arr, num, middle + 1, right);
+		}
+		let res = find(arr, 71, 0, arr.length - 1);
+		console.log(res);
+	</script>
+</body>
+
+</html>

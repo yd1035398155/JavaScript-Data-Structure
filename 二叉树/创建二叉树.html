@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		class Node { // 定义节点
+			constructor(val) {
+				this.val = val
+				this.left = null
+				this.right = null
+			}
+		}
+
+		const createTree = (arr) => { // 创建二叉树
+			let tree = new Node(arr[0])
+			let Nodes = [tree]
+			let i = 1
+			for (let node of Nodes) {
+				Nodes.push(node.left = new Node(arr[i]))
+				i += 1
+				if (i == arr.length) return tree
+				Nodes.push(node.right = new Node(arr[i]))
+				i += 1
+				if (i == arr.length) return tree
+			}
+		}
+		let arr = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4];
+		console.log(arr.length);
+		// let tree = createTree(arr);
+		// var lowestCommonAncestor = function (root, p, q) {
+		// 	//设定父子表
+		// 	let fatherMap = new Map();
+		// 	fatherMap.set(root, root)
+		// 	process(root)
+		// 	//设p的父亲链,直到root
+		// 	let fatherSet = new Set();
+		// 	let cur = p;
+		// 	while (cur != fatherMap.get(cur)) {
+		// 		fatherSet.add(cur);
+		// 		cur = fatherMap.get(cur);
+		// 	}
+		// 	fatherSet.add(root);
+		// 	//查找q的父亲链,每次都在p的父亲链中查找是否存在,存在则返回 
+		// 	cur = q;
+		// 	while (cur != fatherMap.get(cur)) {
+		// 		if (fatherSet.has(cur)) return cur;
+		// 		else cur = fatherMap.get(cur)
+		// 	}
+		// 	return root;
+		// 	function process(root) {
+		// 		if (root === null) return
+		// 		fatherMap.set(root.left, root)
+		// 		fatherMap.set(root.right, root)
+		// 		process(root.left, fatherMap)
+		// 		process(root.right, fatherMap)
+		// 	}
+		// };
+		// let res = lowestCommonAncestor(tree, tree.left, tree.left.right.right);
+		// console.log(res);
+	</script>
+</body>
+
+</html>

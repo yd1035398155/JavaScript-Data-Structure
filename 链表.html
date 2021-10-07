@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<style>
+		div {
+			font-size: 18px;
+			margin: auto 0;
+			transform: translateY(50%);
+		}
+	</style>
+</head>
+
+<body>
+	<div>测试</div>
+</body>
+
+<script>
+	class Node {
+		constructor(params) {
+			this.next = null;
+			this.key = params;
+		}
+	}
+
+	function List() {
+		this.head = new Node('head');
+	}
+	List.prototype = {
+		find: function (key) {
+			let cur = this.head;
+			while (cur.next) {
+				cur = cur.next
+				if (key == cur.key) {
+					break
+				}
+			}
+			return cur
+		},
+		insert: function (item, key) {
+			let newNode = new Node(key);
+			let pre = this.find(item);
+			newNode.next = pre.next;
+			pre.next = newNode;
+		},
+	}
+	var names = new List();
+	names.insert('head', 'eeg');
+	var eeg = names.find('eeg');
+	console.log(eeg);
+
+
+</script>
+
+</html>

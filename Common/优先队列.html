@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		class Priority_Queue {
+			constructor(arr) {
+				if (arr.length) {
+					this.queue = arr.slice();
+					this.queue.sort((a, b) => b - a);
+					return
+				}
+				this.queue = []
+			}
+			add_one() {
+				this.queue = this.queue.map(item => item + 1);
+				return
+			}
+			enqueue(val) {
+				let t = this.queue;
+				if (val >= t[0]) {
+					t.unshift(val);
+					return
+				} else if (val <= t[t.length - 1]) {
+					t.push(val);
+					return
+				} else {
+					for (let i = 0; i <= t.length - 2; i++) {
+						if (val <= t[i] && val >= t[i + 1]) {
+							t.splice(i + 1, 0, val);
+							return
+						}
+					}
+				}
+			}
+			dequeue() {
+				return this.queue.shift();
+			}
+			getFirtst() {
+				return this.queue[0];
+			}
+		}
+
+
+
+	</script>
+</body>
+
+</html>

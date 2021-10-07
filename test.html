@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<script>
+		Function.prototype.n_call = function () {
+			let obj = [].shift.call(arguments);
+			obj.fn = this;
+			let res = obj.fn(...arguments);
+			delete obj.fn;
+			return res
+		}
+		Function.prototype.n_apply = function () {
+			let obj = [].shift.call(arguments);
+			obj.fn = this;
+			let res;
+			if (arguments[0]) {
+				res = obj.fn(...arguments[0])
+			} else {
+				res = obj.fn()
+			}
+			delete obj.fn;
+			return res
+		}
+		Function.prototype.n_bind = function () {
+			let self = this;
+			let target = [].shift.call(arguments);
+			let args = [...arguments];
+			return function () {
+				return self.apply(target, args.concat(...arguments))
+			}
+		}
+		function a(b, c) {
+			console.log(this.name + b + c);
+		}
+		let v = { name: "YD" }
+		// a.n_call(v, 10, 20)
+		// a.call(v, 10, 20)
+		// a.n_apply(v, [10, 20])
+		// a.apply(v, [10, 20])
+		a.n_bind(v)(10, 20)
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
